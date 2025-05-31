@@ -36,7 +36,7 @@ The current devices implemented within the library.
 | DimmingActuator | `turn_on()`, `turn_off()`, `set_brightness()`, `set_forced_position()` | `state`, `brightness`, `forced_position` |
 | ForceOnOffSensor | | `state` |
 | HeatingActuator | `set_position()` | `position` |
-| MovementDetector | | `state`, `brightness` |
+| MovementDetector | `lock()`, `unlock()` | `state`, `brightness`, `locked` |
 | RainSensor | | `state` |
 | RoomTemperatureController | `turn_on()`, `turn_off()`, `eco_on()`, `eco_off()`, `set_temperature()` | `state`, `current_temperature`, `valve`, `target_temperature`, `state_indication`, `eco_mode` |
 | SmokeDetector | | `state` |
