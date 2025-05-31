@@ -129,3 +129,29 @@ def test_refresh_state_from_datapoint(movement_detector_indoor):
     assert movement_detector_indoor.state is False
     assert movement_detector_indoor.brightness == 52.4
     assert movement_detector_indoor.locked is False
+
+
+@pytest.mark.asyncio
+async def test_lock(movement_detector_indoor):
+    """Test for locking the sensor."""
+    await movement_detector_indoor.lock()
+    assert movement_detector_indoor.locked is True
+    movement_detector_indoor._api.set_datapoint.assert_called_with(
+        device_id="ABB7F500E17A",
+        channel_id="ch0003",
+        datapoint="idp0004",
+        value="1",
+    )
+
+
+@pytest.mark.asyncio
+async def test_unlock(movement_detector_indoor):
+    """Test for unlocking the sensor."""
+    await movement_detector_indoor.unlock()
+    assert movement_detector_indoor.locked is False
+    movement_detector_indoor._api.set_datapoint.assert_called_with(
+        device_id="ABB7F500E17A",
+        channel_id="ch0003",
+        datapoint="idp0004",
+        value="0",
+    )
