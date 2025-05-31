@@ -11,8 +11,8 @@ class MovementDetector(Base):
     """Free@Home MovementDetector Class."""
 
     _state_refresh_pairings: list[Pairing] = [
-        Pairing.AL_BRIGHTNESS_LEVEL,
         Pairing.AL_TIMED_MOVEMENT,
+        Pairing.AL_BRIGHTNESS_LEVEL,
         Pairing.AL_INFO_LOCKED_SENSOR,
     ]
     _callback_attributes: list[str] = [
