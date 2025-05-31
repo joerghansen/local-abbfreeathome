@@ -163,11 +163,9 @@ class Base:
     async def refresh_state(self):
         """Refresh the state of the device from the api."""
         for _pairing in self._state_refresh_pairings:
-            _datapoint_id, _datapoint_value = self.get_output_by_pairing(
-                pairing=_pairing
-            )
+            _datapoint_id, _ = self.get_output_by_pairing(pairing=_pairing)
 
-            _datapoint = (
+            _datapoint_value = (
                 await self._api.get_datapoint(
                     device_id=self.device_id,
                     channel_id=self.channel_id,
@@ -178,7 +176,7 @@ class Base:
             self._refresh_state_from_datapoint(
                 datapoint={
                     "pairingID": _pairing.value,
-                    "value": _datapoint,
+                    "value": _datapoint_value,
                 }
             )
 
